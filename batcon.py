@@ -2,6 +2,7 @@
 import os,json,time
 
 while True:
+  try:
     b=json.loads(os.popen("termux-wifi-connectioninfo").read())
     if b['ip'] == "192.168.1.213":
         os.system("termux-api-start")
@@ -29,7 +30,8 @@ while True:
             os.system('curl 192.168.1.101/4/off')
 
     else:
+        os.system('termux-tts-speak no wifi')
         print('No KOTIKONE')
     time.sleep(30)
-               
-
+  except: pass
+  
