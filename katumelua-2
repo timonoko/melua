@@ -1,6 +1,5 @@
 
 
-
 ~/.shortcuts/sshd-noko &
 
 termux-volume music 10
@@ -9,17 +8,19 @@ termux-volume alarm 0
 
 batconni () {
   killall python
+  sleep 1
+  python ~/.shortcuts/batcon.py  &
   python ~/.shortcuts/batcon-watch.py &
-  python ~/.shortcuts/batcon.py &
   sleep 5
 }
 batconni
+sleep 20
 
 while true ; do
  ssh tnoko@192.168.1.11 katumelua-1 &
  sleep 1
- nc -w 10 192.168.1.11 7777 | play -v 2 -
- sleep 100
+ nc -w 10 192.168.1.11 7777 | play -v 2 - 
+ sleep 30
  batconni
 done
 
